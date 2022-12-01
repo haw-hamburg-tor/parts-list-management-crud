@@ -24,6 +24,11 @@ public class ComponentRegister {
         return instance;
     }
 
+    public void clear() {
+        this.products.clear();
+        this.materials.clear();
+    }
+
     public Material createMaterial(String name, Integer price) {
         var material = new Material(name, price);
         addMaterial(material);

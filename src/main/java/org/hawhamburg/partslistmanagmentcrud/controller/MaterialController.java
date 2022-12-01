@@ -35,7 +35,7 @@ public class MaterialController {
             description = "This retrieves all Materials.")
     @GetMapping
     public List<MaterialDTO> getAllMaterials() {
-        return materialService.fetchAllMaterials().stream().map(this::toMaterialDTO).toList();
+        return materialService.fetchAllMaterials().stream().map(MaterialController::toMaterialDTO).toList();
     }
 
     @ApiResponse(
@@ -77,7 +77,7 @@ public class MaterialController {
             }
     )
     @PostMapping
-    public ResponseEntity<?> createMaterial(@RequestBody MaterialDTO materialDTO) {
+    public ResponseEntity<?> createNewMaterial(@RequestBody MaterialDTO materialDTO) {
         try {
             Material newMaterial = materialService.createNewMaterial(materialDTO.name(), materialDTO.price());
             URI locationHeader = ServletUriComponentsBuilder.fromCurrentRequest().path(RESOURCE_IDENTIFIER).buildAndExpand(newMaterial.getName()).toUri();
@@ -150,7 +150,7 @@ public class MaterialController {
         }
     }
 
-    private MaterialDTO toMaterialDTO(Material material) {
+    public static MaterialDTO toMaterialDTO(Material material) {
         return new MaterialDTO(material.getName(), material.getPrice());
     }
 }

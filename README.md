@@ -10,3 +10,5 @@ The application was built with Java 17 and [Spring Boot 2.7.6](https://spring.io
 Documentation for the REST API is generated automatically via [springdoc-openapi](https://springdoc.org/).
 Its [swagger-ui](https://swagger.io/tools/swagger-ui/) can be served at http://localhost:8080/swagger-ui.html
 after starting the application.
+
+API test are realized via Spring Boot Test and its MockMvc.
